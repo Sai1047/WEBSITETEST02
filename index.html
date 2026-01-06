@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SJ IT LTD - Web Development & BPO</title>
+    <meta name="description" content="We create fast, Modern and scalable websites tailored to grow your business. Property Preservation & BPO Services.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              background: '#0f172a', // Dark Slate Blue
+              primary: '#38bdf8', // Light Blue / Sky
+              secondary: '#94a3b8', // Slate Grey
+              grey: '#64748b',
+              'off-grey': '#cbd5e1',
+              'dove-grey': '#475569',
+              silver: '#e2e8f0',
+              'dark-grey': '#1e293b',
+            },
+            backgroundImage: {
+              'hero-gradient': 'linear-gradient(180deg, #38bdf8, #1e3a8a)',
+              'glass-gradient': 'linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)',
+            },
+            animation: {
+              marquee: 'marquee 80s linear infinite', 
+              marqueeReverse: 'marqueeReverse 80s linear infinite',
+              'pop-up': 'popUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+            keyframes: {
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-50%)' }, 
+              },
+              marqueeReverse: {
+                '0%': { transform: 'translateX(-50%)' },
+                '100%': { transform: 'translateX(0%)' },
+              },
+              popUp: {
+                '0%': { opacity: '0', transform: 'scale(0.9) translateY(20px)' },
+                '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+              }
+            },
+          },
+        },
+      }
+    </script>
+
+    <style>
+      body {
+        background-color: #0f172a;
+        color: white;
+        overflow-x: hidden;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+      
+      /* Glassmorphism Utilities */
+      .glass {
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(56, 189, 248, 0.05); 
+      }
+      
+      .glass-card {
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(56, 189, 248, 0.1);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Reveal Animation Classes */
+      .reveal {
+        opacity: 0;
+        transform: translateY(3rem);
+        transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* Smooth transitions for marquee images */
+      .marquee-img {
+          transition: all 0.3s ease;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="w-full font-sans selection:bg-primary selection:text-black">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 left-0 bg-background/80 backdrop-blur-xl border-b border-primary/20 py-4">
+      <div class="max-w-7xl mx-auto px-5 w-full flex justify-between items-center">
+        <a href="/" class="block">
+          <h1 class="text-2xl font-black tracking-tighter text-white">
+            SJ<span class="text-primary">IT</span>LTD
+          </h1>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="#" class="text-white hover:text-primary transition-colors font-medium text-base">Home</a>
+          <div class="relative group">
+            <button class="flex items-center gap-1 text-white hover:text-primary transition-colors font-medium text-base">
+              Services <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </button>
+            <div class="absolute top-full left-0 pt-2 w-48 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
+              <div class="glass rounded-md shadow-lg overflow-hidden py-2 border border-primary/20">
+                <a href="#team" class="block px-4 py-2 text-white hover:bg-primary/20 hover:text-primary text-sm font-medium">Our Team</a>
+                <a href="#services" class="block px-4 py-2 text-white hover:bg-primary/20 hover:text-primary text-sm font-medium">Services</a>
+              </div>
+            </div>
+          </div>
+          <a href="#about" class="text-white hover:text-primary transition-colors font-medium text-base">About</a>
+          <a href="#development" class="text-white hover:text-primary transition-colors font-medium text-base">Development</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <a href="#contact" class="hidden sm:flex px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-black transition-all rounded-xl font-semibold text-sm">
+            Contact Us
+          </a>
+          <button class="lg:hidden text-white" id="menu-btn">
+            <i data-lucide="menu" class="w-7 h-7"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-background/95 backdrop-blur-xl z-40 pt-24 px-5 transition-transform duration-300 translate-x-full">
+        <button class="absolute top-6 right-5 text-white p-2" id="close-menu-btn">
+           <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <div class="flex flex-col gap-6 text-xl">
+          <a href="#" class="text-white hover:text-primary mobile-link">Home</a>
+          <a href="#services" class="text-white hover:text-primary mobile-link">Services</a>
+          <a href="#about" class="text-white hover:text-primary mobile-link">About</a>
+          <a href="#development" class="text-white hover:text-primary mobile-link">Development</a>
+          <a href="#contact" class="text-primary border border-primary px-4 py-3 rounded-xl text-center mobile-link">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="pt-32 pb-12 relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
+            <!-- Background Decor -->
+            <div class="absolute top-0 right-0 w-full h-full pointer-events-none opacity-20">
+                <div class="absolute right-[-10%] top-[10%] w-[45rem] h-[45rem] bg-primary blur-[200px] rounded-full animate-pulse opacity-40"></div>
+                <div class="absolute left-[-10%] top-[20%] w-[35rem] h-[35rem] bg-blue-600 blur-[200px] rounded-full opacity-40"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-5 relative z-10 flex flex-col items-center text-center">
+                
+                <!-- Rating Block -->
+                <div class="flex flex-col items-center mb-8 animate-pop-up opacity-0" style="animation-delay: 0ms;">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="relative flex items-center justify-center">
+                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg border border-white/20 z-10 text-black font-bold text-xs">
+                                BPO
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-start">
+                            <span class="text-[10px] font-bold text-white leading-none mb-1">4.9</span>
+                            <div class="flex text-primary gap-0.5">
+                                <i data-lucide="star" class="w-2.5 h-2.5 fill-current"></i>
+                                <i data-lucide="star" class="w-2.5 h-2.5 fill-current"></i>
+                                <i data-lucide="star" class="w-2.5 h-2.5 fill-current"></i>
+                                <i data-lucide="star" class="w-2.5 h-2.5 fill-current"></i>
+                                <i data-lucide="star" class="w-2.5 h-2.5 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-secondary font-medium tracking-wide">Property Preservation & BPO Services</p>
+                </div>
+
+                <!-- Headings -->
+                <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold leading-tight mb-6 tracking-tight">
+                    <span class="block text-white animate-pop-up opacity-0" style="animation-delay: 150ms;">Streamline Your</span>
+                    <div class="flex flex-wrap items-center justify-center gap-2 md:gap-4 animate-pop-up opacity-0" style="animation-delay: 300ms;">
+                        <span class="text-secondary">Preservation</span>
+                        <!-- Pill Container -->
+                        <div class="h-12 md:h-20 px-4 md:px-8 bg-white/5 border border-white/10 backdrop-blur-xl rounded-full flex items-center gap-4 md:gap-6 shadow-[0_0_30px_rgba(56,189,248,0.1)]">
+                            <i data-lucide="home" class="h-6 w-6 md:h-10 md:w-10 text-primary hover:scale-110 transition-transform"></i>
+                            <i data-lucide="file-text" class="h-6 w-6 md:h-10 md:w-10 text-white hover:scale-110 transition-transform"></i>
+                            <div class="w-px h-6 bg-white/20"></div>
+                            <i data-lucide="bar-chart-3" class="h-6 w-6 md:h-10 md:w-10 text-primary hover:scale-110 transition-transform"></i>
+                        </div>
+                        <span class="text-secondary">Workflow</span>
+                    </div>
+                </h1>
+
+                <!-- Subtext -->
+                <p class="max-w-2xl mx-auto text-secondary text-lg md:text-2xl mt-4 mb-10 animate-pop-up opacity-0 leading-relaxed font-light" style="animation-delay: 450ms;">
+                    We provide fast, accurate, and scalable data processing & backend support tailored to grow your property preservation business.
+                </p>
+
+                <!-- CTA Button -->
+                <div class="animate-pop-up opacity-0" style="animation-delay: 600ms;">
+                    <a href="#services" class="inline-flex items-center gap-3 px-10 py-5 bg-blue-900/40 border border-primary hover:bg-primary hover:text-black text-primary rounded-full transition-all duration-300 group shadow-[0_0_20px_rgba(56,189,248,0.2)]">
+                        <span class="font-bold text-lg group-hover:text-black transition-colors">Explore Our Services</span>
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-current group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Slider Section -->
+                <div class="mt-24 w-full overflow-hidden relative animate-pop-up opacity-0" style="animation-delay: 800ms;">
+                    <div class="flex gap-6 animate-marquee hover:[animation-play-state:paused] w-max" id="hero-slider">
+                        <!-- JS populated -->
+                    </div>
+                </div>
+
+                <!-- Marquee Section -->
+                <div class="mt-16 w-full max-w-6xl mx-auto relative overflow-hidden animate-pop-up opacity-0" style="animation-delay: 1000ms;">
+                    <div class="absolute top-0 left-0 h-full w-32 bg-gradient-to-r from-background to-transparent z-10"></div>
+                    <div class="absolute top-0 right-0 h-full w-32 bg-gradient-to-l from-background to-transparent z-10"></div>
+                    
+                    <div class="flex gap-16 animate-marquee w-max py-4 items-center" id="brand-marquee">
+                         <!-- JS populated -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MISSION SECTION -->
+        <section class="py-20 md:py-32 px-5 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="reveal">
+                    <div class="relative rounded-[2rem] overflow-hidden p-[2px] bg-gradient-to-r from-primary to-blue-900 shadow-[0_0_40px_rgba(56,189,248,0.2)]">
+                        <div class="bg-background/80 backdrop-blur-xl rounded-[2rem] relative overflow-hidden py-16 px-6 md:px-20 text-center">
+                            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto">
+                                Our mission is to design websites that attract and engage customers.
+                            </h2>
+                            <p class="text-xl md:text-2xl text-secondary">
+                                However, we approach things a bit differently with our data-driven strategies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section class="py-20 px-5" id="services">
+            <div class="max-w-7xl mx-auto">
+                <div class="reveal">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-5xl font-bold text-white">See How We Can Help Your Brand</h2>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="services-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY US SECTION -->
+        <section class="py-20 px-5" id="about">
+            <div class="max-w-7xl mx-auto">
+                <div class="reveal">
+                    <div class="text-center mb-16 max-w-3xl mx-auto">
+                        <h2 class="text-3xl md:text-5xl font-bold text-white">Why Webvigo Technologies <br/>Stands Out</h2>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="tech-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM SECTION -->
+        <section class="py-20 px-5" id="team">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
+                
+                <!-- Left: Team Slider -->
+                <div class="flex-1 glass-card rounded-[1.5rem] p-8 lg:p-12 shadow-2xl">
+                    <div class="reveal">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-2">Meet Our Team</h3>
+                                <p class="text-secondary text-base max-w-sm">Let Us be Your Backend Team. We take care of all your preservation processing needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reveal" style="transition-delay: 100ms;">
+                        <div class="relative mt-8 overflow-hidden">
+                            <div class="flex gap-4 overflow-x-auto scrollbar-hide snap-x">
+                                <!-- Team Member 1 -->
+                                <div class="snap-center shrink-0 w-[240px] relative group cursor-pointer">
+                                    <div class="rounded-2xl overflow-hidden aspect-[3/4]">
+                                        <img src="Src/CEO.JPG" alt="Md. Shariful Islam Shamim" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="absolute bottom-4 left-0 w-full text-center p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <div class="bg-background/90 backdrop-blur-md rounded-lg py-2 mx-2 border border-primary/20">
+                                            <p class="text-white font-medium text-sm">Md. Shariful Islam Shamim</p>
+                                            <p class="text-xs text-primary">CEO</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Team Member 2 -->
+                                <div class="snap-center shrink-0 w-[240px] relative group cursor-pointer">
+                                    <div class="rounded-2xl overflow-hidden aspect-[3/4]">
+                                        <img src="Src/manager.JPG" alt="Forhad Hossain" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="absolute bottom-4 left-0 w-full text-center p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <div class="bg-background/90 backdrop-blur-md rounded-lg py-2 mx-2 border border-primary/20">
+                                            <p class="text-white font-medium text-sm">Forhad Hossain</p>
+                                            <p class="text-xs text-primary">Managing Director</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Team Member 3 -->
+                                <div class="snap-center shrink-0 w-[240px] relative group cursor-pointer">
+                                    <div class="rounded-2xl overflow-hidden aspect-[3/4]">
+                                        <img src="Src/Accounts.JPG" alt="Md. Ashraful Islam Shakil" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="absolute bottom-4 left-0 w-full text-center p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <div class="bg-background/90 backdrop-blur-md rounded-lg py-2 mx-2 border border-primary/20">
+                                            <p class="text-white font-medium text-sm">Md. Ashraful Islam Shakil</p>
+                                            <p class="text-xs text-primary">Accounts and Management</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <div class="flex justify-between items-center mt-8">
+                            <h3 class="text-lg font-bold text-white">Interested in joining with us?</h3>
+                            <a href="#" class="flex items-center gap-2 bg-primary/10 border border-primary text-primary px-5 py-2 rounded-full hover:bg-primary hover:text-black transition-colors">
+                                <span class="text-sm font-medium">Write us</span>
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5 -rotate-45"></i>
+                            </a>
+                        </div>
+                        <p class="text-secondary text-sm mt-2">Please send us your details along with your resume.</p>
+                    </div>
+                </div>
+
+                <!-- Right: Capabilities -->
+                <div class="w-full lg:w-[480px] glass-card rounded-[1.5rem] p-8 lg:p-12 shadow-2xl flex flex-col">
+                    <div class="reveal" style="transition-delay: 300ms;">
+                        <div class="mb-6 text-center lg:text-left">
+                            <h3 class="text-2xl font-extrabold text-white mb-2">Supported</h3>
+                            <h2 class="text-4xl font-black text-primary my-4 lg:mx-0">SJ IT LTD</h2>
+                            <p class="text-secondary text-base">Expert Property Preservation & BPO Services Company in Bangladesh</p>
+                        </div>
+
+                        <div class="mt-8">
+                            <h3 class="text-xl font-bold text-white mb-6 text-center">Capabilities</h3>
+                            <div class="flex flex-wrap gap-2 justify-center lg:justify-start" id="capabilities-list">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS SECTION -->
+        <section class="py-20 px-5">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+                
+                <!-- Grid of Stats -->
+                <div class="w-full lg:w-1/2">
+                    <div class="reveal">
+                        <!-- CHANGED: 1 column on mobile, 2 columns on sm+ to prevent squashing -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Optimized height and padding for mobile to prevent text overlap -->
+                            <div class="glass-card rounded-[1.3rem] p-6 sm:p-8 min-h-[14rem] flex flex-col justify-center items-center text-center hover:bg-primary/5 transition-colors">
+                                <h3 class="text-4xl md:text-5xl font-bold text-white mb-2">500K+</h3>
+                                <p class="text-primary text-lg font-medium">Work Orders</p>
+                            </div>
+                            <div class="glass-card rounded-[1.3rem] p-6 sm:p-8 min-h-[14rem] flex flex-col justify-center items-center text-center hover:bg-primary/5 transition-colors">
+                                <h3 class="text-4xl md:text-5xl font-bold text-white mb-2">50+</h3>
+                                <p class="text-primary text-lg font-medium">Clients</p>
+                            </div>
+                            <div class="glass-card rounded-[1.3rem] p-6 sm:p-8 min-h-[14rem] flex flex-col justify-center items-center text-center hover:bg-primary/5 transition-colors">
+                                <h3 class="text-4xl md:text-5xl font-bold text-white mb-2">99%</h3>
+                                <p class="text-primary text-lg font-medium">QC Accuracy</p>
+                            </div>
+                            <div class="glass-card rounded-[1.3rem] p-6 sm:p-8 min-h-[14rem] flex flex-col justify-center items-center text-center hover:bg-primary/5 transition-colors">
+                                <h3 class="text-4xl md:text-5xl font-bold text-white mb-2">24/7</h3>
+                                <p class="text-primary text-lg font-medium">Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results & Analytics Text -->
+                <div class="w-full lg:w-1/2">
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <div class="inline-block border border-primary/50 bg-primary/10 rounded-full px-4 py-1 mb-6">
+                            <span class="text-primary font-medium">Results & Analytics</span>
+                        </div>
+                        <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-12 leading-tight">Performance Insights and Analytics Overview</h3>
+
+                        <!-- Marquee in Stats -->
+                        <div class="relative">
+                            <p class="text-center text-secondary mb-6 font-medium">Trusted by Leading Brands</p>
+                            <div class="flex gap-8 overflow-hidden opacity-60">
+                                <div class="flex gap-12 animate-marquee w-max" id="small-marquee">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPARISON SECTION -->
+        <section class="py-20 px-5 relative">
+            <div class="max-w-4xl mx-auto">
+                <div class="reveal">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Choosing <span class="text-primary">SJ IT LTD</span><br/>Technologies Over Others</h2>
+                        <p class="text-xl text-secondary">See why SJ IT LTD stands out with superior service, innovation, and client satisfaction benchmarks.</p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <div class="flex justify-between items-center px-4 sm:px-8 mb-8 text-lg sm:text-xl font-bold text-white">
+                        <div class="w-1/2">Other Agencies</div>
+                        <div class="w-1/2 pl-4 sm:pl-8 flex items-center gap-2">
+                            <span class="text-xl sm:text-2xl font-bold text-primary">SJ IT LTD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4" id="comparison-list">
+                     <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- GROWTH SECTION -->
+        <section class="py-20 px-5" id="development">
+            <div class="max-w-7xl mx-auto">
+                <div class="reveal">
+                    <div class="text-center mb-16 max-w-3xl mx-auto">
+                        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">We Provide All Essential Services for Accelerating Business Growth</h2>
+                        <p class="text-xl text-secondary">Discover our comprehensive range of services tailored to enhance your digital and operational presence.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Card 1 -->
+                    <div class="reveal">
+                        <div class="glass-card rounded-[1.3rem] p-8 md:p-10 relative h-full">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none"></div>
+                            <div class="flex justify-end mb-6">
+                                <a href="#" class="inline-flex items-center gap-2 border border-primary text-white px-5 py-3 rounded-xl hover:bg-primary hover:text-black transition-colors z-10">
+                                    <span class="font-medium">Start Now</span>
+                                    <i data-lucide="arrow-right" class="w-4 h-4 -rotate-45"></i>
+                                </a>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-4">Property Preservation Processing</h3>
+                            <p class="text-grey font-medium mb-8">We handle the backend workload so you can focus on the field. From updating work orders to ensuring timely submissions with zero errors.</p>
+                            <div class="h-px w-full bg-white/10 mb-8"></div>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i><span class="text-secondary font-medium">Work Order Processing & Submission.</span></div>
+                                <div class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i><span class="text-secondary font-medium">Bids & Repair Estimations.</span></div>
+                                <div class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i><span class="text-secondary font-medium">Quality Control (QC) Assurance.</span></div>
+                                <div class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i><span class="text-secondary font-medium">Vendor Payroll & Invoicing.</span></div>
+                                <div class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i><span class="text-secondary font-medium">Utility Activation & Management.</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <div class="glass-card rounded-[1.3rem] p-8 md:p-10 relative h-full">
+                            <div class="flex justify-end mb-6">
+                                <a href="#" class="inline-flex items-center gap-2 border border-primary text-white px-5 py-3 rounded-xl hover:bg-primary hover:text-black transition-colors">
+                                    <span class="font-medium">Start Now</span>
+                                    <i data-lucide="arrow-right" class="w-4 h-4 -rotate-45"></i>
+                                </a>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-4">BPO & Digital Services</h3>
+                            <p class="text-grey font-medium mb-8">Accelerate your business operations with our BPO solutions, including virtual assistance, marketing, and customer support.</p>
+                            <div class="h-px w-full bg-white/10 mb-8"></div>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i><span class="text-secondary font-medium">Data Entry & Virtual Assistance.</span></div>
+                                <div class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i><span class="text-secondary font-medium">24/7 Call Center Support.</span></div>
+                                <div class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i><span class="text-secondary font-medium">CRM Management for Vendors.</span></div>
+                                <div class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i><span class="text-secondary font-medium">Lead Generation for Realtors.</span></div>
+                                <div class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i><span class="text-secondary font-medium">Digital Marketing for REOs.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARTNERS SECTION -->
+        <section class="py-20 overflow-hidden">
+            <div class="reveal">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Our Valuable Partners</h2>
+                    <div class="w-full max-w-xl mx-auto h-[2px] bg-primary"></div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-8">
+                <!-- Row 1 -->
+                <div class="flex gap-8 animate-marquee w-max" id="partners-marquee">
+                    <!-- Populated by JS -->
+                </div>
+                <!-- Row 2 -->
+                <div class="flex gap-8 animate-marqueeReverse w-max" id="partners-marquee-reverse">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG SECTION -->
+        <section class="py-20 px-5">
+            <div class="max-w-7xl mx-auto">
+                <div class="reveal">
+                    <div class="text-center mb-12">
+                        <div class="inline-block bg-primary/20 p-[1px] rounded-sm mb-3">
+                            <span class="bg-background text-primary px-3 py-1 text-xs rounded-sm block">Our Blog</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">News, insights and more</h2>
+                        <p class="text-xl font-medium text-secondary max-w-2xl mx-auto">Dive into our blog for expert insights, tips, and industry trends to elevate your preservation business.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Blog 1 -->
+                    <div class="reveal" style="transition-delay: 0ms;">
+                        <a href="#" class="border border-primary bg-primary/5 rounded-[1.3rem] p-2 pb-6 hover:border-white transition-colors group block h-full">
+                            <div class="rounded-[1.3rem] overflow-hidden mb-4">
+                                <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6912c2bd3ad1dce1323e038c_Rectangle%20198.png" alt="Blog 1" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="px-3">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="bg-primary/20 p-[1px] rounded-[2px] inline-block">
+                                        <span class="bg-background text-primary px-2 text-xs block rounded-[2px]">BPO Services</span>
+                                    </span>
+                                    <span class="text-[0.625rem] font-medium text-off-grey">Oct 11, 2025</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white leading-snug mb-8">Maximizing ROI in Property Preservation with Efficient BPO</h3>
+                                <div class="flex items-center gap-2 text-off-grey">
+                                    <span class="font-medium text-lg">Read Full Blog</span>
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Blog 2 -->
+                    <div class="reveal" style="transition-delay: 100ms;">
+                        <a href="#" class="border border-primary bg-primary/5 rounded-[1.3rem] p-2 pb-6 hover:border-white transition-colors group block h-full">
+                            <div class="rounded-[1.3rem] overflow-hidden mb-4">
+                                <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6912c2bd74f66ce8737b4e00_Rectangle%20198%20(1).png" alt="Blog 2" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="px-3">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="bg-primary/20 p-[1px] rounded-[2px] inline-block">
+                                        <span class="bg-background text-primary px-2 text-xs block rounded-[2px]">Industry Tech</span>
+                                    </span>
+                                    <span class="text-[0.625rem] font-medium text-off-grey">Oct 11, 2025</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white leading-snug mb-8">Top 5 Tools for Property Preservation Vendors in 2025</h3>
+                                <div class="flex items-center gap-2 text-off-grey">
+                                    <span class="font-medium text-lg">Read Full Blog</span>
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Blog 3 -->
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <a href="#" class="border border-primary bg-primary/5 rounded-[1.3rem] p-2 pb-6 hover:border-white transition-colors group block h-full">
+                            <div class="rounded-[1.3rem] overflow-hidden mb-4">
+                                <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6912c2bd81c14808640016bb_Rectangle%20198%20(2).png" alt="Blog 3" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="px-3">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="bg-primary/20 p-[1px] rounded-[2px] inline-block">
+                                        <span class="bg-background text-primary px-2 text-xs block rounded-[2px]">Quality Control</span>
+                                    </span>
+                                    <span class="text-[0.625rem] font-medium text-off-grey">Oct 11, 2025</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white leading-snug mb-8">How to Reduce Kickbacks and Improve QC Scores</h3>
+                                <div class="flex items-center gap-2 text-off-grey">
+                                    <span class="font-medium text-lg">Read Full Blog</span>
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="py-20 px-5" id="contact">
+            <div class="max-w-7xl mx-auto">
+                <div class="reveal">
+                    <div class="bg-gradient-to-b from-primary to-blue-900 p-[2px] rounded-[1.3rem]">
+                        <div class="bg-background bg-[url('https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6914cc4aac360a51be5ab483_Rectangle%2094.png')] bg-center bg-no-repeat rounded-[1.3rem] py-12 md:py-16 px-6 text-center">
+                            <h2 class="text-3xl md:text-5xl font-bold text-white mb-2">Start Your Project</h2>
+                            <p class="text-lg font-medium text-secondary mb-8 max-w-md mx-auto">Contact us today to start streamlining your property preservation business.</p>
+                            
+                            <div class="flex flex-wrap justify-center gap-6 mb-8">
+                                <div class="bg-gradient-to-b from-primary to-blue-900 p-[1px] rounded-sm inline-block">
+                                    <div class="bg-background px-3 py-1 rounded-sm flex items-center gap-2">
+                                        <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6911bb20df872a92ee0a0426_20x20.svg" class="w-3 h-3" alt="icon" style="filter: hue-rotate(180deg)">
+                                        <span class="text-xs text-primary">Work Order Processing</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-b from-primary to-blue-900 p-[1px] rounded-sm inline-block">
+                                    <div class="bg-background px-3 py-1 rounded-sm flex items-center gap-2">
+                                        <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6911bb20df872a92ee0a0426_20x20.svg" class="w-3 h-3" alt="icon" style="filter: hue-rotate(180deg)">
+                                        <span class="text-xs text-primary">Bid Estimations</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-b from-primary to-blue-900 p-[1px] rounded-sm inline-block">
+                                    <div class="bg-background px-3 py-1 rounded-sm flex items-center gap-2">
+                                        <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6911bb20df872a92ee0a0426_20x20.svg" class="w-3 h-3" alt="icon" style="filter: hue-rotate(180deg)">
+                                        <span class="text-xs text-primary">Vendor Management</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#" class="inline-flex items-center gap-2 px-6 py-3 border border-primary bg-primary/10 rounded-xl text-black hover:bg-primary hover:text-white transition-colors">
+                                <i data-lucide="phone" class="w-4 h-4 fill-current"></i>
+                                <span class="font-semibold text-white">Book a Call</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-background relative pt-24">
+        <!-- Globe Video Background Area -->
+        <div class="relative w-full h-[56rem] md:h-[40rem] overflow-hidden">
+            <video 
+                autoplay 
+                loop 
+                muted 
+                playsinline 
+                class="absolute top-0 left-0 w-full h-full object-cover opacity-30 mix-blend-screen scale-110"
+            >
+                <source src="https://github.com/designmonks/webvideos/raw/refs/heads/main/footer_globe.mp4" type="video/mp4" />
+            </video>
+            
+            <!-- Logo Overlays -->
+            <div class="absolute bottom-16 left-0 w-full flex justify-center gap-4">
+                <div class="bg-white/5 backdrop-blur-xl rounded-2xl p-4 w-32 h-24 flex items-center justify-center hover:scale-105 transition-transform border border-white/10">
+                    <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6912f07cd9fc9f2295eaef1a_Government_Seal_of_Bangladesh.svg%201.png" alt="Gov Seal" class="max-w-full max-h-full" />
+                </div>
+                <div class="bg-white/5 backdrop-blur-xl rounded-2xl p-4 w-32 h-24 flex items-center justify-center hover:scale-105 transition-transform border border-white/10">
+                    <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6912f04d3ef2f83c874f2519_Layer_1%20(9).svg" alt="BASIS" class="max-w-full max-h-full" />
+                </div>
+                <div class="bg-white/5 backdrop-blur-xl rounded-2xl p-4 w-32 h-24 flex items-center justify-center hover:scale-105 transition-transform border border-white/10">
+                    <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6912f04d12b615011a04dd97_Layer_1%20(10).svg" alt="e-CAB" class="max-w-full max-h-full" />
+                </div>
+            </div>
+            
+            <!-- Gradient Fade -->
+            <div class="absolute bottom-0 w-full h-32 bg-gradient-to-t from-background to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-5 pt-10 pb-5 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between gap-12 mb-16">
+                <!-- Left Column -->
+                <div class="md:w-1/3">
+                    <h1 class="text-3xl font-black text-white mb-8">SJ <span class="text-primary">IT</span> LTD</h1>
+                    <div class="flex gap-4 flex-wrap">
+                        <a href="#" class="border border-primary/50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-primary hover:text-black text-white transition-all cursor-pointer group hover:scale-110">
+                            <i data-lucide="facebook" class="w-5 h-5 transition-transform group-hover:rotate-12"></i>
+                        </a>
+                        <a href="#" class="border border-primary/50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-primary hover:text-black text-white transition-all cursor-pointer group hover:scale-110">
+                            <i data-lucide="twitter" class="w-5 h-5 transition-transform group-hover:rotate-12"></i>
+                        </a>
+                        <a href="#" class="border border-primary/50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-primary hover:text-black text-white transition-all cursor-pointer group hover:scale-110">
+                            <i data-lucide="instagram" class="w-5 h-5 transition-transform group-hover:rotate-12"></i>
+                        </a>
+                        <a href="#" class="border border-primary/50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-primary hover:text-black text-white transition-all cursor-pointer group hover:scale-110">
+                            <i data-lucide="linkedin" class="w-5 h-5 transition-transform group-hover:rotate-12"></i>
+                        </a>
+                        <a href="#" class="border border-primary/50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-primary hover:text-black text-white transition-all cursor-pointer group hover:scale-110">
+                            <i data-lucide="youtube" class="w-5 h-5 transition-transform group-hover:rotate-12"></i>
+                        </a>
+                        <a href="#" class="border border-primary/50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-primary hover:text-black text-white transition-all cursor-pointer group hover:scale-110">
+                            <i data-lucide="github" class="w-5 h-5 transition-transform group-hover:rotate-12"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links Columns -->
+                <div class="md:w-1/3 flex justify-between">
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-6">Company</h4>
+                        <ul class="space-y-4 text-secondary font-medium">
+                            <li><a href="#" class="hover:text-primary transition-colors">About</a></li>
+                            <li><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
+                            <li><a href="#" class="hover:text-primary transition-colors">Portfolio</a></li>
+                            <li><a href="#" class="hover:text-primary transition-colors">Pricing</a></li>
+                            <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-primary transition-colors">Terms and Conditions</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-px bg-primary/30 h-auto mx-4"></div>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-6">Services</h4>
+                        <ul class="space-y-4 text-secondary font-medium">
+                            <li><a href="#" class="hover:text-primary transition-colors">All Services</a></li>
+                            <li><a href="#" class="hover:text-primary transition-colors">Web Development</a></li>
+                            <li><a href="#" class="hover:text-primary transition-colors">Content Development</a></li>
+                            <li><a href="#" class="hover:text-primary transition-colors">E-commerce Development</a></li>
+                            <li><a href="#" class="hover:text-primary transition-colors">Digital Marketing</a></li>
+                            <li><a href="#" class="hover:text-primary transition-colors">Local SEO</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contact Columns -->
+                <div class="md:w-1/3 space-y-4">
+                    <!-- BD Address Card -->
+                    <div class="bg-white/5 backdrop-blur-xl rounded-[1.3rem] p-6 hover:bg-white/10 transition-colors border border-white/5 group">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-7 shrink-0 rounded-[4px] overflow-hidden shadow-sm mt-1 ring-1 ring-white/10">
+                                <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6912faf9e2efcbccdd1616ea_image%2013.svg" class="w-full h-full object-cover" alt="BD" />
+                            </div>
+                            <div>
+                                <h5 class="text-white font-bold text-sm mb-1">Dhaka, Bangladesh</h5>
+                                <p class="text-secondary text-xs leading-relaxed mb-3">
+                                    Ka-6/a, Navana Sylvania, Baridhara, Nadda, Gulshan-2 Dhaka-1212
+                                </p>
+                                <div class="flex flex-col gap-2">
+                                    <a href="tel:+8801300460411" class="text-white text-xs font-semibold hover:text-primary transition-colors flex items-center gap-2">
+                                        <i data-lucide="phone" class="w-3 h-3 text-primary"></i> +88 01300-460411
+                                    </a>
+                                    <a href="mailto:info@sjitltd.com" class="text-white text-xs font-semibold hover:text-primary transition-colors flex items-center gap-2">
+                                        <i data-lucide="mail" class="w-3 h-3 text-primary"></i> info@sjitltd.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- USA Address Card -->
+                    <div class="bg-white/5 backdrop-blur-xl rounded-[1.3rem] p-6 hover:bg-white/10 transition-colors border border-white/5 group">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-7 shrink-0 rounded-[4px] overflow-hidden shadow-sm mt-1 ring-1 ring-white/10">
+                                <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6912fc25ed71f28b5ad7dfa8_image%2012.png" class="w-full h-full object-cover" alt="USA" />
+                            </div>
+                            <div>
+                                <h5 class="text-white font-bold text-sm mb-1">New York, USA</h5>
+                                <p class="text-secondary text-xs leading-relaxed mb-3">
+                                    New York, United States
+                                </p>
+                                <div class="flex flex-col gap-2">
+                                    <a href="tel:+15716668500" class="text-white text-xs font-semibold hover:text-primary transition-colors flex items-center gap-2">
+                                        <i data-lucide="phone" class="w-3 h-3 text-primary"></i> +1 (555) 555–5555
+                                    </a>
+                                    <a href="mailto:contact@sjitltd.com" class="text-white text-xs font-semibold hover:text-primary transition-colors flex items-center gap-2">
+                                        <i data-lucide="mail" class="w-3 h-3 text-primary"></i> contact@sjitltd.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partner Logos Bottom -->
+            <div class="py-8 mb-5">
+                <div class="flex flex-wrap justify-between items-center gap-4">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69130ebd9886a42e144c2c91_Group%20448.svg" alt="Partner" class="h-7 mb-1 filter grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all" />
+                        <span class="text-xs text-secondary font-medium">Professional Partner</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69130ebb6a636b80a79305da_Group%20449.svg" alt="Partner" class="h-7 mb-1 filter grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all" />
+                        <span class="text-xs text-secondary font-medium">Professional Partner</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69130eb7be0b55ab233e4281_Layer_1%20(11).svg" alt="Partner" class="h-7 mb-1 filter grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all" />
+                        <span class="text-xs text-secondary font-medium">Top Team On Behance</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69130eb87a5239020e74da99_Layer_1%20(12).svg" alt="Partner" class="h-7 mb-1 filter grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all" />
+                        <span class="text-xs text-secondary font-medium">Top Team On Dribbble</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69130eb7e0f3d60a367bba37_Layer_1%20(13).svg" alt="Partner" class="h-7 mb-1 filter grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all" />
+                        <div class="flex items-center gap-1">
+                            <span class="text-xs text-secondary font-medium">Reviewed On</span>
+                            <img src="https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/6913130e1b4b861c950b92ae_Group%20154.svg" class="h-3" alt="Stars" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-[#6e6d6d] py-5">
+                <p>Copyright © 2025 SJ IT LTD - All Rights Reserved.</p>
+                <div class="flex gap-6 text-white">
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        // --- CONSTANTS ---
+        const sliderImages = [
+            "https://images.unsplash.com/photo-1664575602554-208c7a264360?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1581094794329-cd1361d90401?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop"
+        ];
+        
+        const marqueeImages = [
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690c9f30201c78ec54582da5_Layer_1%20(1).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690c9f300d06b11f7a7f3029_Layer_1%20(2).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690c9f308b75785f514b44a7_Layer_1%20(3).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690c9f30d746a6cf5bb37637_Group%20(13).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690c9f2f247c1b348d3d8940_Layer_1%20(4).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690c9f2f6272e03753814349_Layer_1%20(5).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690c9f2f01a5f3727770f02b_Layer_1%20(6).svg"
+        ];
+        
+        const services = [
+            { icon: "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690cc848933129f565989435_9lDwe5RVWhcROsUnUSLQ5QiaaPk%201.svg", title: "Work Order Processing", desc: "Accurate and timely updates for all your preservation work orders." },
+            { icon: "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690cc84962e8b69cbd2a21ca_FhPczbEeg5bRtLspTbQHpRUUg%201.svg", title: "Bid & Repair Estimation", desc: "Professional bid creation with precise cost estimation for repairs." },
+            { icon: "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690cc848b70591bee48433ca_36QlWRG5xFqx3DaY9IWO4wgp98%201.svg", title: "Vendor Management", desc: "Streamlined communication and coordination with field vendors." }
+        ];
+
+        const techCards = [
+            { icon: "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690cd59223d245df103c6c73_ugiZZHlwHStPJHKTJFZ1xmjyeU%201.svg", title: "Preservation Data Entry", desc: "We handle high-volume data entry for REO and preservation platforms like PropertyPres Wizard, Pruvan, and more." },
+            { icon: "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690cd59261bc9c1f4c699977_36x36.svg", title: "Before & After QC", desc: "Our QA team ensures every photo and line item meets client guidelines before submission to avoid kickbacks." },
+            { icon: "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690cd592463811813fd7668f_36x36%20(1).svg", title: "24/7 Support", desc: "Our team operates round the clock to ensure your work orders are processed on time, every time." },
+            { icon: "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690cd5920b4dc7ac616da581_36x36%20(2).svg", title: "Vendor Management", desc: "We recruit, vet, and manage vendors to ensure full coverage and compliance across your service areas." },
+            { icon: "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690cd5924b4acead2bf560df_36x36%20(3).svg", title: "Utility Management", desc: "We handle utility activations, bill payments, and shut-offs for vacant properties efficiently." },
+            { icon: "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690cd592463811813fd7668f_36x36%20(1).svg", title: "Software Expertise", desc: "Expertise in all major preservation software: PPW, XactPRM, RepairBase, and client-proprietary systems." }
+        ];
+
+        const capabilities = [ "Work Order Processing", "Bid Creation", "Vendor Recruiting", "QC Assurance", "Pruvan / PPW / XactPRM", "RepairBase Estimation", "Invoicing & Payroll", "Utility Management", "BPO Services"];
+
+        const comparisons = [
+            { other: "Experienced team delivering standard solutions.", us: "Highly skilled specialists delivering customized solutions." },
+            { other: "Offers standard, template-based designs.", us: "Offers innovative, bespoke website designs." },
+            { other: "Limited post-launch support and updates.", us: "Comprehensive post-launch support and updates." },
+            { other: "Basic performance with average loading times.", us: "Optimal performance with fast loading times." },
+            { other: "Basic SEO practices implemented.", us: "Advanced SEO tactics for enhanced online visibility." }
+        ];
+
+        const partners = [
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69132d2a327df0ac8f0a79c1_Layer_1%20(16).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69132ac7aa091b678655ffba_Layer_1%20(15).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69132d2a4f62719aaf9ab36c_Layer_1%20(17).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69132dbec2c016d2550905dd_Layer_1%20(28).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69132d28f4fbb24c0ee615da_Layer_1%20(19).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69132d28395ad7cdd2d6b770_Layer_1%20(20).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69132d28ce54f51f8fc02d09_Layer_1%20(21).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69132d259c7bb9c8be35adf0_Layer_1%20(22).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69132d221f6f3ff030deea8c_Layer_1%20(23).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69132d22354aaaf808faa0b0_Layer_1%20(24).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69132d22278dcf2a42b8d74d_Layer_1%20(25).svg",
+            "https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/69132d23944bb2fa6946af26_Layer_1%20(26).svg"
+        ];
+
+        // --- RENDER LOGIC ---
+
+        function renderHeroSlider() {
+            const container = document.getElementById('hero-slider');
+            const images = [...sliderImages, ...sliderImages, ...sliderImages, ...sliderImages, ...sliderImages, ...sliderImages]; // Repeat for smooth loop
+            container.innerHTML = images.map((src) => `
+                <div class="relative w-[280px] md:w-[420px] aspect-[16/10] rounded-2xl overflow-hidden flex-shrink-0 border border-white/10 shadow-2xl bg-white/5 group">
+                    <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-20 transition-opacity z-10"></div>
+                    <img src="${src}" alt="Slide" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0" />
+                </div>
+            `).join('');
+        }
+
+        function renderBrandMarquee(id, images, reverse = false) {
+            const container = document.getElementById(id);
+            const imgs = [...images, ...images, ...images, ...images];
+            container.innerHTML = imgs.map((src) => `
+                <img src="${src}" alt="Brand" class="h-8 md:h-12 w-auto opacity-40 hover:opacity-100 transition-opacity invert grayscale hover:grayscale-0 flex-shrink-0" />
+            `).join('');
+        }
+        
+        function renderPartnerMarquee(id, images) {
+            const container = document.getElementById(id);
+            const imgs = [...images, ...images];
+            container.innerHTML = imgs.map((src) => `
+                <div class="bg-black border border-white/10 rounded-lg px-8 py-4 w-44 h-16 flex items-center justify-center shadow-lg shrink-0">
+                  <img src="${src}" alt="Partner" class="max-w-full max-h-full" />
+                </div>
+            `).join('');
+        }
+
+        function renderServices() {
+            const container = document.getElementById('services-grid');
+            container.innerHTML = services.map((s, i) => `
+                <div class="reveal" style="transition-delay: ${i * 100}ms">
+                    <div class="glass-card rounded-[1.5rem] p-8 relative overflow-hidden group hover:border-primary transition-colors duration-300 h-full">
+                        <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10 flex flex-col items-start h-full">
+                            <div class="w-12 h-12 mb-6 p-2 bg-primary/10 rounded-lg">
+                                <img src="${s.icon}" alt="${s.title}" class="w-full h-full object-contain filter invert brightness-0 saturate-100 invert-[.25] sepia-[.95] saturate-[2000%] hue-rotate-[190deg]" />
+                            </div>
+                            <h3 class="text-xl font-extrabold text-white mb-3">${s.title}</h3>
+                            <p class="text-secondary font-medium leading-relaxed">${s.desc}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderTechCards() {
+            const container = document.getElementById('tech-grid');
+            container.innerHTML = techCards.map((card, i) => `
+                <div class="reveal" style="transition-delay: ${i * 50}ms">
+                    <div class="glass-card rounded-[1.5rem] p-8 relative overflow-hidden hover:border-primary transition-all duration-300 h-full">
+                        <div class="absolute inset-0 bg-[url('https://cdn.prod.website-files.com/690c287dbe2911a89643cc8e/690cc77196889056c0212d43_Rectangle%2093.png')] opacity-10 bg-cover bg-repeat mix-blend-overlay"></div>
+                        <div class="relative z-10">
+                            <div class="w-10 h-10 mb-6 p-1 bg-primary/20 rounded-lg">
+                                <img src="${card.icon}" alt="${card.title}" class="w-full h-full object-contain filter invert brightness-0 saturate-100 invert-[.25] sepia-[.95] saturate-[2000%] hue-rotate-[190deg]" />
+                            </div>
+                            <h3 class="text-lg font-extrabold text-white mb-3">${card.title}</h3>
+                            <p class="text-secondary text-base leading-relaxed">${card.desc}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderCapabilities() {
+            const container = document.getElementById('capabilities-list');
+            container.innerHTML = capabilities.map((cap, i) => `
+                <span class="bg-white/5 border border-white/10 text-secondary px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/20 hover:text-white transition-colors cursor-default ${i === capabilities.length - 1 ? 'w-full text-center' : ''}">
+                    ${cap}
+                </span>
+            `).join('');
+        }
+
+        function renderComparisons() {
+            const container = document.getElementById('comparison-list');
+            container.innerHTML = comparisons.map((item, i) => `
+                <div class="reveal" style="transition-delay: ${i * 50}ms">
+                    <div class="glass-card rounded-[1.3rem] flex overflow-hidden">
+                        <div class="w-1/2 p-4 sm:p-6 flex items-start gap-4 border-r border-white/10 bg-black/20">
+                            <div class="bg-red-500/10 p-1 rounded-full shrink-0 hidden sm:block">
+                                <i data-lucide="x" class="text-red-500 w-5 h-5"></i>
+                            </div>
+                            <div class="bg-red-500/10 p-1 rounded-full shrink-0 sm:hidden">
+                                <i data-lucide="x" class="text-red-500 w-3 h-3"></i>
+                            </div>
+                            <p class="text-secondary font-medium text-xs sm:text-base">${item.other}</p>
+                        </div>
+                        <div class="w-1/2 p-4 sm:p-6 flex items-start gap-4 relative bg-primary/5">
+                            <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-1 h-8 bg-primary blur-[4px]"></div>
+                            <div class="bg-green-500/10 p-1 rounded-full shrink-0 hidden sm:block">
+                                <i data-lucide="check" class="text-green-500 w-5 h-5"></i>
+                            </div>
+                             <div class="bg-green-500/10 p-1 rounded-full shrink-0 sm:hidden">
+                                <i data-lucide="check" class="text-green-500 w-3 h-3"></i>
+                            </div>
+                            <p class="text-white font-medium text-xs sm:text-base">${item.us}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // --- INIT & EVENTS ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render Content
+            renderHeroSlider();
+            renderBrandMarquee('brand-marquee', marqueeImages);
+            renderBrandMarquee('small-marquee', marqueeImages.slice(0, 5));
+            renderServices();
+            renderTechCards();
+            renderCapabilities();
+            renderComparisons();
+            renderPartnerMarquee('partners-marquee', partners);
+            renderPartnerMarquee('partners-marquee-reverse', [...partners].reverse());
+
+            // Initialize Lucide Icons
+            lucide.createIcons();
+
+            // Mobile Menu
+            const menuBtn = document.getElementById('menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            function toggleMenu(show) {
+                if (show) {
+                    mobileMenu.classList.remove('translate-x-full');
+                } else {
+                    mobileMenu.classList.add('translate-x-full');
+                }
+            }
+
+            menuBtn.addEventListener('click', () => toggleMenu(true));
+            closeMenuBtn.addEventListener('click', () => toggleMenu(false));
+            mobileLinks.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+
+            // Intersection Observer for Reveal Animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Delay adding observation slightly to ensure DOM is ready
+            setTimeout(() => {
+                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            }, 100);
+        });
+
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
